@@ -28,7 +28,6 @@ def get_args():
         print("Using GPU")
     else:
         print("Using CPU")
-
     return args
 
 def show_mask_on_image(img, mask):
@@ -73,7 +72,10 @@ if __name__ == '__main__':
             args.discard_ratio, args.head_fusion)
 
 
+    #print(f"img.shape: {img.shape}")
+    #print(f"mask.shape: {mask.shape}")
     np_img = np.array(img)[:, :, ::-1]
+    print(np_img.shape)
     mask = cv2.resize(mask, (np_img.shape[1], np_img.shape[0]))
     mask = show_mask_on_image(np_img, mask)
     cv2.imshow("Input Image", np_img)
